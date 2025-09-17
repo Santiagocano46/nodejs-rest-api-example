@@ -1,7 +1,8 @@
 'use strict'
 
 var express = require('express')
-var app = express()
+var app = express();
+app.use(express.json());
 
 app.set("port", process.env.PORT || 4000)
 
@@ -20,11 +21,20 @@ app.get('/:id', function (req, res) {
   console.log(response)
   res.end(JSON.stringify(response))
 })
-
-app.post('/', function (req, res) {
-  console.log('POST request received')
+//  NUEVO MÉTODO GET /status
+app.get('/status', function (req, res) {
+  console.log('GET /status request received')
   res.writeHead(200, {'Content-Type': 'application/json'})
-  var response = { "response" : "This is POST method." }
+  var response = { "status" : "ok", "timestamp": new Date().toISOString() }
+  console.log(response)
+  res.end(JSON.stringify(response))
+})
+
+//  NUEVO MÉTODO POST /echo
+app.post('/echo', function (req, res) {
+  console.log('POST /echo request received')
+  res.writeHead(200, {'Content-Type': 'application/json'})
+  var response = { "echoed" : req.body }
   console.log(response)
   res.end(JSON.stringify(response))
 })
