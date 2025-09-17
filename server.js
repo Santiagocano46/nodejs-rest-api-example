@@ -21,7 +21,7 @@ app.get('/:id', function (req, res) {
   console.log(response)
   res.end(JSON.stringify(response))
 })
-//  NUEVO MÉTODO GET /status
+// NUEVO MÉTODO GET /status
 app.get('/status', function (req, res) {
   console.log('GET /status request received')
   res.writeHead(200, {'Content-Type': 'application/json'})
@@ -30,7 +30,7 @@ app.get('/status', function (req, res) {
   res.end(JSON.stringify(response))
 })
 
-//  NUEVO MÉTODO POST /echo
+// NUEVO MÉTODO POST /echo
 app.post('/echo', function (req, res) {
   console.log('POST /echo request received')
   res.writeHead(200, {'Content-Type': 'application/json'})
